@@ -1,0 +1,15 @@
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\Prueba_Punto_Ticket.exe
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\Prueba_Punto_Ticket.deps.json
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\Prueba_Punto_Ticket.runtimeconfig.json
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\Prueba_Punto_Ticket.dll
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\ref\Prueba_Punto_Ticket.dll
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\bin\Debug\net6.0\Prueba_Punto_Ticket.pdb
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.csproj.AssemblyReference.cache
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.AssemblyInfoInputs.cache
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.AssemblyInfo.cs
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.csproj.CoreCompileInputs.cache
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.dll
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\ref\Prueba_Punto_Ticket.dll
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.pdb
+C:\Users\devco\source\repos\Prueba_Punto_Ticket\Prueba_Punto_Ticket\obj\Debug\net6.0\Prueba_Punto_Ticket.genruntimeconfig.cache

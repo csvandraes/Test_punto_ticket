@@ -18,7 +18,7 @@
         {
 
             //Read file and save in array
-            string[] lines = System.IO.File.ReadAllLines(System.IO.Path.GetFullPath(Directory.GetCurrentDirectory() + @"\Input.txt"));
+            string[] lines = System.IO.File.ReadAllLines(System.IO.Path.GetFullPath(Directory.GetCurrentDirectory() + @"\InputData.txt"));
             //Delete text after "," character
             for (int i = 0; i < lines.Length; i++) lines[i] = lines[i].Substring(0, lines[i].IndexOf(","));
             //Sort lines array, contain tree phylogenetic

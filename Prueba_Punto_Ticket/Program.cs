@@ -4,59 +4,106 @@
     {
         static void Main(string[] args)
         {
-            while (true)
-            {
-                Console.WriteLine("********************--Start--********************\n");
-                Console.WriteLine("Ingrese especie o sub especie a mostrar");
-                ReadTxtFile(Console.ReadLine());
-                Console.WriteLine("\n");
-                Console.WriteLine("********************--End--********************\n");
-            }
+            bool exitApp = false;
 
+            while (!exitApp)
+            {
+                try
+                {
+
+                    Console.WriteLine("Ingresa 1 para mostrar Especies y sub especies");
+                    Console.WriteLine("Ingresa 2 Salir");
+
+                    int option = Convert.ToInt32(Console.ReadLine());
+
+                    switch (option)
+                    {
+                        case 1:
+                            Console.WriteLine("****************************************\n");
+                            Console.WriteLine("Ingrese especie o sub especie a mostrar");
+                            string inputMatch = Console.ReadLine();
+                            SearchMatchNodes(inputMatch);
+                            Console.WriteLine("\n");
+                            Console.WriteLine("****************************************\n");
+                            break;
+                        case 2:
+                            exitApp = true;
+                            break;
+                        default:
+                            Console.WriteLine("Opcion no válida");
+                            break;
+                    }
+                }
+                catch (FormatException e)
+                {
+                    Console.WriteLine(e.Message);
+                }
+            }
         }
-        public static void ReadTxtFile(string regularMatch)
+        public static void SearchMatchNodes(string inputMatch)
         {
+            string[] InputTxtFileArray = ReadInputTxtFile();
+            string[] CleanFileArray = CleanInputTxtFile(InputTxtFileArray);
+            string[] SortFileArray = SortCleanArray(CleanFileArray);
+            List<string> listMatchNodeFound = MatchNodes(SortFileArray, inputMatch);
 
-            //Read file and save in array
-            string[] lines = System.IO.File.ReadAllLines(System.IO.Path.GetFullPath(Directory.GetCurrentDirectory() + @"\InputData.txt"));
-            //Delete text after "," character
-            for (int i = 0; i < lines.Length; i++) lines[i] = lines[i].Substring(0, lines[i].IndexOf(","));
-            //Sort lines array, contain tree phylogenetic
-            Array.Sort(lines);
-            //Declare new list of founds nodes
-            List<string> listFounds = new List<string>();
-            //Find in sorted lines array match input regularMatch and if is true, add to listFounds
-            int indice = Array.IndexOf(lines, regularMatch);
-            for (int i = indice; i < lines.Length; i++)
+            foreach (var phraseNode in listMatchNodeFound)
             {
-                if (lines[i].StartsWith(regularMatch)) listFounds.Add(lines[i]);
-            }
-            //Count numbers of point in phrase, for print
-            foreach (string phrase in listFounds)
-            {
-                int numberOfPoint = phrase.Split('.').Length - 1;
-                PrintResultSearch(numberOfPoint, phrase);
+                string phraseNodePrint = FactoryPhrase(GetNumberOfSpaces(phraseNode), phraseNode);
+                PrintResult(phraseNodePrint);
             }
         }
-        public static void PrintResultSearch(int numberOfPoint, string phrase)
+        public static string[] ReadInputTxtFile()
         {
-            //If root
-            if (phrase.Length == 1)
-            {
-                Console.WriteLine($"Especie,{phrase}");
-                return;
-            }
-            //Nodes and sub-nodes
-            string sub = "";
-            for (int i = 0; i < numberOfPoint; i++)
-            {
-                if (i > 0) sub = sub.Insert(0, "\t");
-                sub = sub + "Sub-";
-            }
-            sub = sub + $"Especie {phrase}";
-            //print result
-            Console.WriteLine(sub);
+            string[] txtFileArray = System.IO.File.ReadAllLines(System.IO.Path.GetFullPath(Directory.GetCurrentDirectory() + @"\InputData.txt"));
+            return txtFileArray;
         }
+        public static string[] CleanInputTxtFile(string[] InputTxtFileArray)
+        {
+            for (int i = 0; i < InputTxtFileArray.Length; i++) InputTxtFileArray[i] = InputTxtFileArray[i].Substring(0, InputTxtFileArray[i].IndexOf(","));
+            return InputTxtFileArray;
+        }
+        public static string[] SortCleanArray(string[] CleanFileArray)
+        {
+            Array.Sort(CleanFileArray);
+            return CleanFileArray;
+        }
+        public static List<string> MatchNodes(string[] SortFileArray, string inputMatch)
+        {
+            List<string> listMatchNodeFound = new List<string>();
+            int indice = Array.IndexOf(SortFileArray, inputMatch);
+            for (int i = indice; i < SortFileArray.Length; i++) if (SortFileArray[i].StartsWith(inputMatch)) listMatchNodeFound.Add(SortFileArray[i]);
+            return listMatchNodeFound;
+        }
+        public static int GetNumberOfSpaces(string node)
+        {
+            int numberOfSpaces = 0;
+            numberOfSpaces = node.Split('.').Length - 1;
+            return numberOfSpaces;
+        }
+        public static string FactoryPhrase(int drawNumbersOfSpaces, string matchNodeFound)
+        {
+            string subSeparator = "";
+            if (matchNodeFound.Length == 1)
+            {
+                subSeparator = subSeparator + $"Especie,{matchNodeFound}";
+                return subSeparator;
 
+            }
+            else
+            {
+                for (int i = 0; i < drawNumbersOfSpaces; i++)
+                {
+                    if (i > 0) subSeparator = subSeparator.Insert(0, "\t");
+                    subSeparator = subSeparator + "Sub-";
+                }
+                subSeparator = subSeparator + $"Especie {matchNodeFound}";
+                return subSeparator;
+            }
+        }
+        public static void PrintResult(string phraseNode)
+        {
+            Console.WriteLine(phraseNode);
+        }
     }
 }
